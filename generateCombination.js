@@ -1,6 +1,8 @@
+const fs = require('fs');
+
 const { backgrounds, faces, eyes, mouths } = require('./traits.js');
 
-const TARGET_NUM_OF_NFT = 5;
+const TARGET_NUM_OF_NFT = 100;
 const NFTs = [];
 
 const getRandomElement = (limit) => {
@@ -28,6 +30,7 @@ const generateNfts = () => {
     }
   }
 
+  fs.writeFileSync('./nfts.txt', JSON.stringify(NFTs), { flag: 'a+' });
   return NFTs;
 }
 

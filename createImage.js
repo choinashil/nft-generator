@@ -28,7 +28,7 @@ const createNftFiles = async (nft, i) => {
   await ctx.drawImage(mouth, 0, 0, 512, 512);
 
   saveImage(canvas, i + 1);
-  await uploadMetaData(nft, i + 1); // metaData upload to IPFS
+  // await uploadMetaData(nft, i + 1); // metaData upload to IPFS (nft.storage)
 }
 
 (async () => {

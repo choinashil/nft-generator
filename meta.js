@@ -4,47 +4,9 @@ const { NFTStorage, File } = require('nft.storage');
 
 const { FILE_PATH } = require('./constants.js');
 const traits = require('./traits.js');
-const { backgrounds, faces, eyes, mouths } = traits;
+const { getAttributes, saveMetaDataUri } = require('./utils.js');
 
 const nftStorage = new NFTStorage({ token: process.env.NFT_STORAGE_API_KEY });
-
-const getAttributes = (trait, traitIndex) => {
-  let traitType = '';
-  let value = '';
-
-  switch(trait) {
-    case 0:
-      traitType = 'Background';
-      value = backgrounds[traitIndex].name;
-      break;
-
-    case 1:
-      traitType = 'Face';
-      value = faces[traitIndex].name;
-      break;
-
-    case 2:
-      traitType = 'Eyes';
-      value = eyes[traitIndex].name;
-      break;
-
-    case 3:
-      traitType = 'Mouth';
-      value = mouths[traitIndex].name;
-      break;
-
-    default:
-      traitType = '';
-      value = '';
-  }
-
-  return { trait_type: traitType, value };
-};
-
-const saveMetaDataUri = (uri) => {
-  const fileName = 'meta.txt';
-  fs.writeFileSync(`./${fileName}`, uri + '\r\n', { flag: 'a+' });
-}
 
 const readMetaDataUri = async (i) => {
   const buffer = await fs.readFileSync(META_FILE);
@@ -66,7 +28,7 @@ const uploadMetaData = async (nft, serialNum) => {
 
   const metaData = {
     description: '',
-    name: `ALS-${serialNum}`,
+    name: `WIGGLE-${serialNum}`,
     type: 'Collectable',
     image: 'https://',
     attributes: [],
