@@ -1,0 +1,14 @@
+{
+  "name": "nft-gen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "canvas": "^2.9.0",
+    "nft.storage": "^6.0.1"
+  },
+  "dependencies": {
+    "@pinata/sdk": "^1.1.23",
+    "dotenv": "^16.0.0"
+  }
+}
